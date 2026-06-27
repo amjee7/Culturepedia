@@ -1,4 +1,4 @@
-const CACHE = 'culturepedia-v2';
+const CACHE = 'culturepedia-v4';
 const ASSETS = [
   './',
   './index.html',

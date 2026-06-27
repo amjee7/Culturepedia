@@ -8,13 +8,24 @@
   <title>Culturepedia</title>
   <link rel="manifest" href="manifest.json">
   <link rel="icon" href="icon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
     tailwind.config = {
       theme: {
         extend: {
+          fontFamily: { sans: ['Inter', 'system-ui', 'sans-serif'] },
           colors: {
-            brand: { 50: '#f0fdfa', 500: '#14b8a6', 600: '#0d9488', 700: '#0f766e', 800: '#115e59' }
+            brand: {
+              50: '#f0fdfa', 100: '#ccfbf1', 200: '#99f6e4',
+              500: '#14b8a6', 600: '#0d9488', 700: '#0f766e', 800: '#115e59', 900: '#134e4a'
+            }
+          },
+          boxShadow: {
+            card: '0 1px 3px 0 rgb(0 0 0 / 0.04), 0 1px 2px -1px rgb(0 0 0 / 0.04)',
+            'card-hover': '0 4px 12px -2px rgb(15 118 110 / 0.12), 0 2px 6px -2px rgb(0 0 0 / 0.06)',
           }
         }
       }
@@ -24,117 +35,174 @@
     .form-select {
       appearance: none;
       background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
-      background-position: right 0.6rem center;
+      background-position: right 0.75rem center;
       background-repeat: no-repeat;
       background-size: 1.25rem;
     }
+    .field-input {
+      width: 100%;
+      padding: 0.625rem 0.875rem;
+      border: 1px solid rgb(226 232 240);
+      border-radius: 0.75rem;
+      font-size: 0.875rem;
+      line-height: 1.25rem;
+      color: rgb(51 65 85);
+      background: rgb(255 255 255);
+      box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.03);
+      transition: border-color 0.15s, box-shadow 0.15s;
+    }
+    .field-input::placeholder { color: rgb(148 163 184); }
+    .field-input:hover { border-color: rgb(203 213 225); }
+    .field-input:focus {
+      outline: none;
+      border-color: rgb(20 184 166);
+      box-shadow: 0 0 0 3px rgb(20 184 166 / 0.15);
+    }
+    .btn-primary {
+      transition: background-color 0.15s, transform 0.1s, box-shadow 0.15s;
+    }
+    .btn-primary:hover { box-shadow: 0 4px 12px -2px rgb(13 148 136 / 0.35); }
+    .btn-primary:active { transform: scale(0.98); }
+    .hero-pattern {
+      background-image: radial-gradient(circle at 20% 80%, rgb(255 255 255 / 0.08) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgb(255 255 255 / 0.06) 0%, transparent 40%);
+    }
   </style>
 </head>
-<body class="bg-slate-50 text-slate-800 min-h-screen">
+<body class="bg-slate-50 text-slate-800 min-h-screen font-sans antialiased">
 
-  <header class="bg-brand-700 text-white shadow-md">
-    <div class="max-w-3xl mx-auto px-4 py-5">
-      <div class="flex items-center justify-between gap-3">
-        <div>
-          <h1 class="text-2xl font-bold tracking-tight">Culturepedia</h1>
-          <p class="text-brand-50/80 text-sm mt-0.5">Cultural hints for business & travel</p>
+  <!-- Hero -->
+  <header class="relative bg-gradient-to-br from-brand-800 via-brand-700 to-brand-900 text-white overflow-hidden">
+    <div class="absolute inset-0 hero-pattern pointer-events-none"></div>
+    <div class="relative max-w-3xl mx-auto px-4 sm:px-6 pt-6 pb-10 sm:pt-8 sm:pb-14">
+      <div class="flex items-center justify-between gap-3 mb-8 sm:mb-10">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-xl bg-white/15 backdrop-blur flex items-center justify-center text-sm font-bold ring-1 ring-white/20">C</div>
+          <span class="text-sm font-semibold tracking-wide text-white/90">Culturepedia</span>
         </div>
-        <button id="install-btn" class="hidden text-sm bg-white/15 hover:bg-white/25 px-3 py-1.5 rounded-lg transition">
+        <button
+          id="install-btn"
+          class="hidden text-xs sm:text-sm font-medium bg-white/10 hover:bg-white/20 active:scale-95 px-3 py-1.5 rounded-lg transition ring-1 ring-white/15"
+        >
           Install App
         </button>
+      </div>
+
+      <div class="max-w-xl">
+        <p class="text-brand-200 text-xs sm:text-sm font-medium tracking-wide uppercase mb-3">For travelers &amp; business professionals</p>
+        <h1 class="text-3xl sm:text-4xl font-bold tracking-tight leading-tight text-white">
+          Navigate every culture with confidence
+        </h1>
+        <p class="mt-4 text-base sm:text-lg text-brand-100/90 leading-relaxed">
+          Practical, expert-backed hints for first meetings, dining, negotiations, and everyday etiquette — across 13 countries.
+        </p>
+        <div class="mt-7 flex flex-col sm:flex-row gap-3">
+          <a
+            href="#hints-list"
+            class="btn-primary inline-flex items-center justify-center gap-2 bg-white text-brand-800 font-semibold text-sm px-5 py-3 rounded-xl shadow-lg shadow-black/10 hover:bg-brand-50"
+          >
+            Browse hints
+            <span aria-hidden="true">↓</span>
+          </a>
+          <a
+            href="#share-section"
+            class="inline-flex items-center justify-center gap-2 bg-white/10 hover:bg-white/20 active:scale-[0.98] text-white font-medium text-sm px-5 py-3 rounded-xl transition ring-1 ring-white/20"
+          >
+            Share your insight
+          </a>
+        </div>
       </div>
     </div>
   </header>
 
-  <main class="max-w-3xl mx-auto px-4 py-6 space-y-5">
+  <main class="max-w-3xl mx-auto px-4 sm:px-6 -mt-5 pb-10 space-y-6 sm:space-y-7">
 
     <!-- Filters -->
-    <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-5">
+    <section class="bg-white rounded-2xl shadow-card border border-slate-200/80 p-5 sm:p-6">
+      <div class="flex items-center gap-2 mb-4">
+        <div class="w-8 h-8 rounded-lg bg-brand-50 flex items-center justify-center text-brand-600">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+        </div>
+        <div>
+          <h2 class="text-sm font-semibold text-slate-800">Find a hint</h2>
+          <p class="text-xs text-slate-500">Search or filter by region, country, and category</p>
+        </div>
+      </div>
+
       <div class="space-y-4">
         <div>
-          <label for="search" class="block text-xs font-medium text-slate-500 mb-1.5">Search</label>
-          <input
-            id="search"
-            type="search"
-            placeholder="Search hints…"
-            class="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm text-slate-700 shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
-          >
+          <label for="search" class="block text-xs font-semibold text-slate-600 mb-1.5">Search</label>
+          <input id="search" type="search" placeholder="e.g. business cards, dining, gestures…" class="field-input">
         </div>
 
-        <div class="flex flex-col sm:flex-row gap-4">
-          <div class="flex-1 min-w-0">
-            <label for="filter-country" class="block text-xs font-medium text-slate-500 mb-1.5">Country</label>
-            <select
-              id="filter-country"
-              class="form-select w-full px-3 py-2.5 pr-9 border border-slate-200 rounded-lg text-sm text-slate-700 bg-white shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
-            >
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div>
+            <label for="filter-region" class="block text-xs font-semibold text-slate-600 mb-1.5">Region</label>
+            <select id="filter-region" class="form-select field-input pr-10 cursor-pointer">
+              <option value="">All regions</option>
+            </select>
+          </div>
+          <div>
+            <label for="filter-country" class="block text-xs font-semibold text-slate-600 mb-1.5">Country</label>
+            <select id="filter-country" class="form-select field-input pr-10 cursor-pointer">
               <option value="">All countries</option>
             </select>
           </div>
-          <div class="flex-1 min-w-0">
-            <label for="filter-category" class="block text-xs font-medium text-slate-500 mb-1.5">Category</label>
-            <select
-              id="filter-category"
-              class="form-select w-full px-3 py-2.5 pr-9 border border-slate-200 rounded-lg text-sm text-slate-700 bg-white shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
-            >
+          <div>
+            <label for="filter-category" class="block text-xs font-semibold text-slate-600 mb-1.5">Category</label>
+            <select id="filter-category" class="form-select field-input pr-10 cursor-pointer">
               <option value="">All categories</option>
             </select>
           </div>
         </div>
       </div>
-      <p id="result-count" class="text-xs text-slate-500 mt-3 pt-3 border-t border-slate-100"></p>
+
+      <p id="result-count" class="text-xs font-medium text-slate-500 mt-4 pt-4 border-t border-slate-100"></p>
     </section>
 
     <!-- Hints list -->
-    <section id="hints-list" class="space-y-3">
-      <p class="text-center text-slate-400 py-12">Loading hints…</p>
+    <section id="hints-list" class="space-y-4 scroll-mt-4">
+      <p class="text-center text-slate-400 py-16 text-sm">Loading hints…</p>
     </section>
 
     <!-- Submit form -->
-    <section class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-5">
-      <h2 class="font-semibold text-lg text-slate-800 mb-4">Share a hint</h2>
+    <section id="share-section" class="bg-white rounded-2xl shadow-card border border-slate-200/80 p-5 sm:p-6 scroll-mt-6">
+      <div class="flex items-center gap-2 mb-5">
+        <div class="w-8 h-8 rounded-lg bg-brand-50 flex items-center justify-center text-brand-600">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15"/></svg>
+        </div>
+        <div>
+          <h2 class="text-sm font-semibold text-slate-800">Share a hint</h2>
+          <p class="text-xs text-slate-500">Help others avoid cultural missteps</p>
+        </div>
+      </div>
+
       <form id="submit-form" class="space-y-4">
-        <div class="flex flex-col sm:flex-row gap-4">
-          <div class="flex-1 min-w-0">
-            <label for="new-country" class="block text-xs font-medium text-slate-500 mb-1.5">Country</label>
-            <select
-              id="new-country"
-              required
-              class="form-select w-full px-3 py-2.5 pr-9 border border-slate-200 rounded-lg text-sm text-slate-700 bg-white shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
-            >
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label for="new-country" class="block text-xs font-semibold text-slate-600 mb-1.5">Country</label>
+            <select id="new-country" required class="form-select field-input pr-10 cursor-pointer">
               <option value="" disabled selected>Select country</option>
             </select>
           </div>
-          <div class="flex-1 min-w-0">
-            <label for="new-category" class="block text-xs font-medium text-slate-500 mb-1.5">Category</label>
-            <select
-              id="new-category"
-              required
-              class="form-select w-full px-3 py-2.5 pr-9 border border-slate-200 rounded-lg text-sm text-slate-700 bg-white shadow-sm cursor-pointer focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
-            >
+          <div>
+            <label for="new-category" class="block text-xs font-semibold text-slate-600 mb-1.5">Category</label>
+            <select id="new-category" required class="form-select field-input pr-10 cursor-pointer">
               <option value="" disabled selected>Select category</option>
             </select>
           </div>
         </div>
         <div>
-          <label for="new-text" class="block text-xs font-medium text-slate-500 mb-1.5">Hint</label>
-          <textarea
-            id="new-text"
-            required
-            rows="3"
-            placeholder="Your cultural hint…"
-            class="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm text-slate-700 shadow-sm resize-none placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
-          ></textarea>
+          <label for="new-text" class="block text-xs font-semibold text-slate-600 mb-1.5">Your hint</label>
+          <textarea id="new-text" required rows="3" placeholder="What should someone know before a meeting or meal?" class="field-input resize-none"></textarea>
         </div>
         <div>
-          <label for="new-expert-note" class="block text-xs font-medium text-slate-500 mb-1.5">Expert note <span class="text-slate-400 font-normal">(optional)</span></label>
-          <input
-            id="new-expert-note"
-            placeholder="A short insider tip…"
-            class="w-full px-3 py-2.5 border border-slate-200 rounded-lg text-sm text-slate-700 shadow-sm placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
-          >
+          <label for="new-expert-note" class="block text-xs font-semibold text-slate-600 mb-1.5">
+            Expert note <span class="font-normal text-slate-400">(optional)</span>
+          </label>
+          <input id="new-expert-note" placeholder="A short insider tip…" class="field-input">
         </div>
-        <button type="submit" class="w-full bg-brand-600 hover:bg-brand-700 text-white font-medium py-2.5 rounded-lg transition text-sm shadow-sm">
+        <button type="submit" class="btn-primary w-full bg-brand-600 hover:bg-brand-700 text-white font-semibold py-3 rounded-xl text-sm">
           Submit hint
         </button>
       </form>
@@ -142,11 +210,11 @@
 
   </main>
 
-  <footer class="max-w-3xl mx-auto px-4 py-8 text-center text-xs text-slate-400">
-    Culturepedia — your data, your code, no lock-in.
+  <footer class="max-w-3xl mx-auto px-4 sm:px-6 py-10 text-center">
+    <p class="text-xs text-slate-400">Culturepedia — your data, your code, no lock-in.</p>
   </footer>
 
-  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-800 text-white text-sm px-4 py-2 rounded-lg shadow-lg opacity-0 pointer-events-none transition-opacity duration-300 z-50"></div>
+  <div id="toast" class="fixed bottom-6 left-1/2 -translate-x-1/2 bg-slate-900/95 backdrop-blur text-white text-sm font-medium px-5 py-2.5 rounded-xl shadow-xl opacity-0 pointer-events-none transition-all duration-300 z-50 translate-y-2 data-[show]:translate-y-0"></div>
 
   <script src="app.js"></script>
 </body>

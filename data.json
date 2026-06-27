@@ -3,6 +3,7 @@
     {
       "id": "1",
       "country": "Japan",
+      "region": "East Asia",
       "category": "First Meeting",
       "text": "Exchange business cards with both hands, bow slightly, and take a moment to read the card before putting it away — never slip it into your pocket immediately.",
       "votes": 42,
@@ -12,6 +13,7 @@
     {
       "id": "2",
       "country": "Japan",
+      "region": "East Asia",
       "category": "Business Etiquette",
       "text": "In meetings, let the senior person speak first. Nodding shows active listening, but avoid interrupting even when you disagree.",
       "votes": 38,
@@ -20,6 +22,7 @@
     {
       "id": "3",
       "country": "Germany",
+      "region": "Western Europe",
       "category": "First Meeting",
       "text": "Arrive exactly on time — not early, not late. A handshake should be firm, brief, and accompanied by direct eye contact.",
       "votes": 35,
@@ -29,6 +32,7 @@
     {
       "id": "4",
       "country": "Germany",
+      "region": "Western Europe",
       "category": "Communication",
       "text": "Germans value directness. A blunt 'no' is not rude — it is clarity. Avoid vague promises you cannot keep.",
       "votes": 31,
@@ -37,6 +41,7 @@
     {
       "id": "5",
       "country": "Brazil",
+      "region": "Latin America",
       "category": "First Meeting",
       "text": "Expect warm greetings — a handshake plus light cheek kisses among colleagues who know each other. Personal rapport often precedes business talk.",
       "votes": 29,
@@ -45,6 +50,7 @@
     {
       "id": "6",
       "country": "Brazil",
+      "region": "Latin America",
       "category": "Negotiation",
       "text": "Relationships matter more than contracts in early stages. Invest time in coffee chats and small talk before pushing terms.",
       "votes": 27,
@@ -54,6 +60,7 @@
     {
       "id": "7",
       "country": "China",
+      "region": "East Asia",
       "category": "First Meeting",
       "text": "Present your business card with both hands, Chinese side facing up if bilingual. Address people by title and surname unless invited to use first names.",
       "votes": 44,
@@ -62,6 +69,7 @@
     {
       "id": "8",
       "country": "China",
+      "region": "East Asia",
       "category": "Dining",
       "text": "At a business banquet, wait for the host to start eating and to propose the first toast. Leave a little food on your plate — finishing everything can imply you were underfed.",
       "votes": 36,
@@ -70,6 +78,7 @@
     {
       "id": "9",
       "country": "India",
+      "region": "South Asia",
       "category": "First Meeting",
       "text": "Greet with 'Namaste' or a light handshake. Hierarchy matters — acknowledge the most senior person first in group introductions.",
       "votes": 33,
@@ -78,6 +87,7 @@
     {
       "id": "10",
       "country": "India",
+      "region": "South Asia",
       "category": "Gestures",
       "text": "A head wobble can mean yes, acknowledgment, or polite uncertainty — not always agreement. Confirm decisions in writing.",
       "votes": 40,
@@ -87,6 +97,7 @@
     {
       "id": "11",
       "country": "France",
+      "region": "Western Europe",
       "category": "Business Etiquette",
       "text": "Dress slightly more formal than you might at home. Lunch meetings are common and can last two hours — rushing signals disrespect.",
       "votes": 28,
@@ -95,6 +106,7 @@
     {
       "id": "12",
       "country": "France",
+      "region": "Western Europe",
       "category": "Communication",
       "text": "Debate is intellectual, not personal. Challenging ideas in a meeting can be a sign of engagement, not hostility.",
       "votes": 26,
@@ -104,6 +116,7 @@
     {
       "id": "13",
       "country": "South Korea",
+      "region": "East Asia",
       "category": "First Meeting",
       "text": "Bow when greeting, with depth matching the other person's seniority. Offer and receive business cards with both hands.",
       "votes": 34,
@@ -112,6 +125,7 @@
     {
       "id": "14",
       "country": "South Korea",
+      "region": "East Asia",
       "category": "Dining",
       "text": "Never pour your own drink — pour for others and let them pour for you. Use both hands when giving or receiving a glass from a senior colleague.",
       "votes": 37,
@@ -120,6 +134,7 @@
     {
       "id": "15",
       "country": "Mexico",
+      "region": "Latin America",
       "category": "First Meeting",
       "text": "A handshake is standard; closer contacts may hug. Use titles (Licenciado, Ingeniero) until told otherwise.",
       "votes": 21,
@@ -128,6 +143,7 @@
     {
       "id": "16",
       "country": "Mexico",
+      "region": "Latin America",
       "category": "Communication",
       "text": "Indirect refusals are common to save face. Phrases like 'we will see' or 'it is difficult' often mean no — read between the lines.",
       "votes": 32,
@@ -137,6 +153,7 @@
     {
       "id": "17",
       "country": "UAE",
+      "region": "Middle East",
       "category": "Gift Giving",
       "text": "If offering a gift, avoid alcohol or pork-related items. Present it with the right hand or both hands and do not expect it to be opened immediately.",
       "votes": 19,
@@ -145,6 +162,7 @@
     {
       "id": "18",
       "country": "UAE",
+      "region": "Middle East",
       "category": "Business Etiquette",
       "text": "Dress conservatively in business settings. Meetings may start with extended hospitality — accept coffee or dates before diving into agenda items.",
       "votes": 20,
@@ -153,6 +171,7 @@
     {
       "id": "19",
       "country": "Italy",
+      "region": "Western Europe",
       "category": "First Meeting",
       "text": "Personal connection matters — expect conversation about family, food, or football before business. Rushing to the pitch can feel cold.",
       "votes": 26,
@@ -162,6 +181,7 @@
     {
       "id": "20",
       "country": "Turkey",
+      "region": "Middle East",
       "category": "First Meeting",
       "text": "A firm handshake with direct eye contact is standard. Address people by title plus first name (e.g. 'Mr. Ahmet') until invited to be more informal.",
       "votes": 24,
@@ -170,6 +190,7 @@
     {
       "id": "21",
       "country": "Turkey",
+      "region": "Middle East",
       "category": "Dining",
       "text": "Business meals are social events — accept tea or coffee offers graciously. Refusing hospitality can be read as coldness, not efficiency.",
       "votes": 22,
@@ -178,6 +199,7 @@
     {
       "id": "22",
       "country": "Iran",
+      "region": "Middle East",
       "category": "Business Etiquette",
       "text": "Relationship-building (ta'arof) is essential before deals. Expect polite offers of gifts or favors — a graceful decline is often part of the ritual.",
       "votes": 30,
@@ -186,6 +208,7 @@
     {
       "id": "23",
       "country": "Iran",
+      "region": "Middle East",
       "category": "Taboos",
       "text": "Avoid showing the sole of your foot, pointing with a finger, or offering a thumbs-up in formal settings. These gestures can be seen as disrespectful.",
       "votes": 28,
@@ -195,6 +218,7 @@
     {
       "id": "24",
       "country": "Thailand",
+      "region": "Southeast Asia",
       "category": "Gestures",
       "text": "The wai greeting (palms together, slight bow) is appropriate in business — the height of your hands reflects the other person's status.",
       "votes": 31,
@@ -203,6 +227,7 @@
     {
       "id": "25",
       "country": "Thailand",
+      "region": "Southeast Asia",
       "category": "Taboos",
       "text": "Never touch someone's head or point your feet at people or sacred objects. Criticizing the monarchy is illegal and deeply offensive.",
       "votes": 27,

@@ -13,6 +13,19 @@ const CATEGORIES = [
   'Gestures', 'Taboos', 'Gift Giving', 'Negotiation',
 ];
 
+const REGIONS = [
+  'East Asia', 'Southeast Asia', 'South Asia',
+  'Middle East', 'Latin America', 'Western Europe',
+];
+
+const COUNTRY_REGION = {
+  Brazil: 'Latin America', China: 'East Asia', France: 'Western Europe',
+  Germany: 'Western Europe', India: 'South Asia', Iran: 'Middle East',
+  Italy: 'Western Europe', Japan: 'East Asia', Mexico: 'Latin America',
+  'South Korea': 'East Asia', Thailand: 'Southeast Asia', Turkey: 'Middle East',
+  UAE: 'Middle East',
+};
+
 let hints = [];
 let votedIds = new Set();
 
@@ -65,7 +78,28 @@ function mergeHints(base, stored) {
     }
   }
 
-  return Array.from(map.values()).sort((a, b) => b.votes - a.votes);
+  return Array.from(map.values()).map(ensureRegion).sort((a, b) => b.votes - a.votes);
+}
+
+function regionForCountry(country) {
+  return COUNTRY_REGION[country] || '';
+}
+
+function hintRegion(hint) {
+  return regionForCountry(hint.country) || hint.region || '';
+}
+
+function countriesForRegion(region) {
+  if (!region) return [...COUNTRIES];
+  return COUNTRIES.filter(country => COUNTRY_REGION[country] === region);
+}
+
+function ensureRegion(hint) {
+  if (hint.country) {
+    const mapped = regionForCountry(hint.country);
+    if (mapped) hint.region = mapped;
+  }
+  return hint;
 }
 
 function loadVotes() {
@@ -85,30 +119,54 @@ function saveVotes() {
 function getFilters() {
   return {
     search: document.getElementById('search').value.trim().toLowerCase(),
-    country: document.getElementById('filter-country').value,
-    category: document.getElementById('filter-category').value,
+    region: document.getElementById('filter-region').value.trim(),
+    country: document.getElementById('filter-country').value.trim(),
+    category: document.getElementById('filter-category').value.trim(),
   };
 }
 
 function filteredHints() {
-  const { search, country, category } = getFilters();
+  const { search, region, country, category } = getFilters();
 
   return hints.filter(h => {
+    if (region && hintRegion(h) !== region) return false;
     if (country && h.country !== country) return false;
     if (category && h.category !== category) return false;
     if (search) {
-      const haystack = `${h.country} ${h.category} ${h.text} ${h.expertNote || ''}`.toLowerCase();
+      const haystack = `${hintRegion(h)} ${h.country} ${h.category} ${h.text} ${h.expertNote || ''}`.toLowerCase();
       if (!haystack.includes(search)) return false;
     }
     return true;
   });
 }
 
+function populateCountryFilter() {
+  const { region } = getFilters();
+  fillSelect('filter-country', countriesForRegion(region), 'All countries');
+}
+
 function populateFilters() {
-  fillSelect('filter-country', COUNTRIES, 'All countries');
+  fillSelect('filter-region', REGIONS, 'All regions');
+  populateCountryFilter();
   fillSelect('filter-category', CATEGORIES, 'All categories');
   fillSelect('new-country', COUNTRIES, 'Select country', true);
   fillSelect('new-category', CATEGORIES, 'Select category', true);
+}
+
+function onRegionChange() {
+  const countryEl = document.getElementById('filter-country');
+  const prevCountry = countryEl.value.trim();
+  const region = document.getElementById('filter-region').value.trim();
+
+  populateCountryFilter();
+
+  if (prevCountry && region && regionForCountry(prevCountry) !== region) {
+    countryEl.value = '';
+  } else if (prevCountry && countriesForRegion(region).includes(prevCountry)) {
+    countryEl.value = prevCountry;
+  }
+
+  render();
 }
 
 function fillSelect(id, options, placeholder, isSubmit = false) {
@@ -138,7 +196,12 @@ function render() {
   count.textContent = `${list.length} hint${list.length !== 1 ? 's' : ''}`;
 
   if (list.length === 0) {
-    container.innerHTML = '<p class="text-center text-slate-400 py-12">No hints match your filters.</p>';
+    container.innerHTML = `
+      <div class="text-center py-16 px-4">
+        <div class="w-12 h-12 mx-auto mb-4 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 text-lg">∅</div>
+        <p class="text-sm font-medium text-slate-600">No hints match your filters</p>
+        <p class="text-xs text-slate-400 mt-1">Try a different country, category, or search term</p>
+      </div>`;
     return;
   }
 
@@ -148,36 +211,40 @@ function render() {
 function hintCard(h) {
   const voted = votedIds.has(h.id);
   const expertNote = h.expertNote
-    ? `<p class="text-xs text-brand-800 bg-brand-50 border border-brand-100 rounded-lg px-3 py-2 mt-3 leading-relaxed"><span class="font-medium not-italic">Note:</span> <span class="italic">${esc(h.expertNote)}</span></p>`
+    ? `<div class="flex gap-2.5 mt-4 p-3.5 bg-gradient-to-r from-brand-50 to-teal-50/50 border border-brand-100/80 rounded-xl">
+        <span class="shrink-0 w-5 h-5 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center text-[10px] font-bold mt-0.5">i</span>
+        <p class="text-xs text-brand-900 leading-relaxed"><span class="font-semibold not-italic text-brand-800">Expert note</span><span class="text-brand-700/70"> — </span><span class="italic text-brand-800/90">${esc(h.expertNote)}</span></p>
+      </div>`
     : '';
 
   return `
-    <article class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-5 hover:border-slate-300 transition-colors" data-id="${esc(h.id)}">
-      <div class="flex flex-wrap items-center gap-2 mb-3">
-        <span class="text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-100 px-2.5 py-1 rounded-md">${esc(h.country)}</span>
-        <span class="text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200 px-2.5 py-1 rounded-md">${esc(h.category)}</span>
+    <article class="group bg-white rounded-2xl shadow-card border border-slate-200/80 p-5 sm:p-6 border-l-4 border-l-brand-500/80 hover:shadow-card-hover hover:border-slate-300/80 transition-all duration-200" data-id="${esc(h.id)}">
+      <div class="flex flex-wrap items-center gap-2 mb-4">
+        ${h.region ? `<span class="inline-flex items-center text-[10px] font-medium uppercase tracking-wide text-slate-500 bg-slate-50 px-2 py-0.5 rounded ring-1 ring-slate-200/70">${esc(h.region)}</span>` : ''}
+        <span class="inline-flex items-center text-xs font-semibold bg-brand-600 text-white px-2.5 py-1 rounded-md shadow-sm">${esc(h.country)}</span>
+        <span class="inline-flex items-center text-xs font-medium bg-slate-100 text-slate-600 px-2.5 py-1 rounded-md ring-1 ring-slate-200/80">${esc(h.category)}</span>
       </div>
-      <p class="text-sm sm:text-[0.9375rem] text-slate-700 leading-relaxed">${esc(h.text)}</p>
+      <p class="text-[0.9375rem] sm:text-base text-slate-700 leading-relaxed tracking-tight">${esc(h.text)}</p>
       ${expertNote}
-      <div class="flex items-center gap-2 mt-4 pt-3 border-t border-slate-100">
+      <div class="flex items-center gap-2 mt-5 pt-4 border-t border-slate-100">
         <button
-          class="upvote-btn inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition
-            ${voted ? 'bg-brand-100 text-brand-700 cursor-default' : 'bg-slate-100 text-slate-600 hover:bg-brand-50 hover:text-brand-700'}"
+          class="upvote-btn inline-flex items-center gap-1.5 text-xs font-semibold px-3.5 py-2 rounded-lg transition-all active:scale-95
+            ${voted ? 'bg-brand-100 text-brand-700 ring-1 ring-brand-200 cursor-default' : 'bg-slate-100 text-slate-600 hover:bg-brand-50 hover:text-brand-700 hover:ring-1 hover:ring-brand-200'}"
           data-id="${esc(h.id)}"
           ${voted ? 'disabled' : ''}
           aria-label="Upvote hint"
         >
-          <span aria-hidden="true">▲</span>
+          <span aria-hidden="true" class="text-[10px]">▲</span>
           <span class="vote-count">${h.votes}</span>
         </button>
         <button
-          class="copy-btn text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition"
+          class="copy-btn text-xs font-semibold px-3.5 py-2 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 hover:text-slate-800 transition-all active:scale-95 ring-1 ring-transparent hover:ring-slate-200"
           data-id="${esc(h.id)}"
           aria-label="Copy hint"
         >
           Copy
         </button>
-        <time class="text-xs text-slate-400 ml-auto" datetime="${esc(h.created)}">${formatDate(h.created)}</time>
+        <time class="text-xs text-slate-400 ml-auto tabular-nums" datetime="${esc(h.created)}">${formatDate(h.created)}</time>
       </div>
     </article>
   `;
@@ -226,6 +293,7 @@ function submitHint(e) {
   const hint = {
     id: `user-${Date.now()}`,
     country,
+    region: regionForCountry(country),
     category,
     text,
     votes: 0,
@@ -253,6 +321,7 @@ function persistHint(hint) {
 
 function bindEvents() {
   document.getElementById('search').addEventListener('input', render);
+  document.getElementById('filter-region').addEventListener('change', onRegionChange);
   document.getElementById('filter-country').addEventListener('change', render);
   document.getElementById('filter-category').addEventListener('change', render);
   document.getElementById('submit-form').addEventListener('submit', submitHint);
@@ -316,8 +385,12 @@ function showToast(msg) {
   const toast = document.getElementById('toast');
   toast.textContent = msg;
   toast.classList.remove('opacity-0');
+  toast.dataset.show = 'true';
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.add('opacity-0'), 2500);
+  toastTimer = setTimeout(() => {
+    toast.classList.add('opacity-0');
+    delete toast.dataset.show;
+  }, 2500);
 }
 
 // ── Start ──────────────────────────────────────────────────
