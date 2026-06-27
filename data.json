@@ -1,0 +1,211 @@
+{
+  "hints": [
+    {
+      "id": "1",
+      "country": "Japan",
+      "category": "First Meeting",
+      "text": "Exchange business cards with both hands, bow slightly, and take a moment to read the card before putting it away — never slip it into your pocket immediately.",
+      "votes": 42,
+      "created": "2025-11-02",
+      "expertNote": "Treat the card as an extension of the person, not a flyer."
+    },
+    {
+      "id": "2",
+      "country": "Japan",
+      "category": "Business Etiquette",
+      "text": "In meetings, let the senior person speak first. Nodding shows active listening, but avoid interrupting even when you disagree.",
+      "votes": 38,
+      "created": "2025-11-02"
+    },
+    {
+      "id": "3",
+      "country": "Germany",
+      "category": "First Meeting",
+      "text": "Arrive exactly on time — not early, not late. A handshake should be firm, brief, and accompanied by direct eye contact.",
+      "votes": 35,
+      "created": "2025-11-03",
+      "expertNote": "Punctuality signals respect for others' schedules."
+    },
+    {
+      "id": "4",
+      "country": "Germany",
+      "category": "Communication",
+      "text": "Germans value directness. A blunt 'no' is not rude — it is clarity. Avoid vague promises you cannot keep.",
+      "votes": 31,
+      "created": "2025-11-03"
+    },
+    {
+      "id": "5",
+      "country": "Brazil",
+      "category": "First Meeting",
+      "text": "Expect warm greetings — a handshake plus light cheek kisses among colleagues who know each other. Personal rapport often precedes business talk.",
+      "votes": 29,
+      "created": "2025-11-04"
+    },
+    {
+      "id": "6",
+      "country": "Brazil",
+      "category": "Negotiation",
+      "text": "Relationships matter more than contracts in early stages. Invest time in coffee chats and small talk before pushing terms.",
+      "votes": 27,
+      "created": "2025-11-04",
+      "expertNote": "Trust is the real currency in Brazilian deal-making."
+    },
+    {
+      "id": "7",
+      "country": "China",
+      "category": "First Meeting",
+      "text": "Present your business card with both hands, Chinese side facing up if bilingual. Address people by title and surname unless invited to use first names.",
+      "votes": 44,
+      "created": "2025-11-05"
+    },
+    {
+      "id": "8",
+      "country": "China",
+      "category": "Dining",
+      "text": "At a business banquet, wait for the host to start eating and to propose the first toast. Leave a little food on your plate — finishing everything can imply you were underfed.",
+      "votes": 36,
+      "created": "2025-11-05"
+    },
+    {
+      "id": "9",
+      "country": "India",
+      "category": "First Meeting",
+      "text": "Greet with 'Namaste' or a light handshake. Hierarchy matters — acknowledge the most senior person first in group introductions.",
+      "votes": 33,
+      "created": "2025-11-06"
+    },
+    {
+      "id": "10",
+      "country": "India",
+      "category": "Communication",
+      "text": "A head wobble can mean yes, acknowledgment, or polite uncertainty — not always agreement. Confirm decisions in writing.",
+      "votes": 40,
+      "created": "2025-11-06",
+      "expertNote": "Verbal yes and practical yes are not always the same."
+    },
+    {
+      "id": "11",
+      "country": "United States",
+      "category": "First Meeting",
+      "text": "A firm handshake and first-name basis are common even in first meetings. Small talk about sports or travel is a normal icebreaker.",
+      "votes": 22,
+      "created": "2025-11-07"
+    },
+    {
+      "id": "12",
+      "country": "United States",
+      "category": "Negotiation",
+      "text": "Americans often expect fast decisions and clear next steps. End meetings with a recap of action items and owners.",
+      "votes": 25,
+      "created": "2025-11-07"
+    },
+    {
+      "id": "13",
+      "country": "France",
+      "category": "Business Etiquette",
+      "text": "Dress slightly more formal than you might at home. Lunch meetings are common and can last two hours — rushing signals disrespect.",
+      "votes": 28,
+      "created": "2025-11-08"
+    },
+    {
+      "id": "14",
+      "country": "France",
+      "category": "Communication",
+      "text": "Debate is intellectual, not personal. Challenging ideas in a meeting can be a sign of engagement, not hostility.",
+      "votes": 26,
+      "created": "2025-11-08",
+      "expertNote": "Separate argument from relationship."
+    },
+    {
+      "id": "15",
+      "country": "South Korea",
+      "category": "First Meeting",
+      "text": "Bow when greeting, with depth matching the other person's seniority. Offer and receive business cards with both hands.",
+      "votes": 34,
+      "created": "2025-11-09"
+    },
+    {
+      "id": "16",
+      "country": "South Korea",
+      "category": "Dining",
+      "text": "Never pour your own drink — pour for others and let them pour for you. Use both hands when giving or receiving a glass from a senior colleague.",
+      "votes": 37,
+      "created": "2025-11-09"
+    },
+    {
+      "id": "17",
+      "country": "Saudi Arabia",
+      "category": "First Meeting",
+      "text": "Greet the most senior person first. Handshakes between men are common; wait for women to extend a hand or offer a verbal greeting instead.",
+      "votes": 30,
+      "created": "2025-11-10"
+    },
+    {
+      "id": "18",
+      "country": "Saudi Arabia",
+      "category": "Business Etiquette",
+      "text": "Schedule around prayer times and avoid Friday midday meetings. Patience with relationship-building pays off before contracts.",
+      "votes": 24,
+      "created": "2025-11-10"
+    },
+    {
+      "id": "19",
+      "country": "Mexico",
+      "category": "First Meeting",
+      "text": "A handshake is standard; closer contacts may hug. Use titles (Licenciado, Ingeniero) until told otherwise.",
+      "votes": 21,
+      "created": "2025-11-11"
+    },
+    {
+      "id": "20",
+      "country": "Mexico",
+      "category": "Communication",
+      "text": "Indirect refusals are common to save face. Phrases like 'we will see' or 'it is difficult' often mean no — read between the lines.",
+      "votes": 32,
+      "created": "2025-11-11",
+      "expertNote": "Listen for what is not said."
+    },
+    {
+      "id": "21",
+      "country": "United Kingdom",
+      "category": "First Meeting",
+      "text": "A brief handshake and understated small talk work best. Avoid overselling yourself — understatement is often read as confidence.",
+      "votes": 23,
+      "created": "2025-11-12"
+    },
+    {
+      "id": "22",
+      "country": "United Kingdom",
+      "category": "Communication",
+      "text": "'Quite good' can mean mediocre, not excellent. British politeness often wraps criticism in soft language — decode carefully.",
+      "votes": 39,
+      "created": "2025-11-12"
+    },
+    {
+      "id": "23",
+      "country": "United Arab Emirates",
+      "category": "Gift Giving",
+      "text": "If offering a gift, avoid alcohol or pork-related items. Present it with the right hand or both hands and do not expect it to be opened immediately.",
+      "votes": 19,
+      "created": "2025-11-13"
+    },
+    {
+      "id": "24",
+      "country": "United Arab Emirates",
+      "category": "Business Etiquette",
+      "text": "Dress conservatively in business settings. Meetings may start with extended hospitality — accept coffee or dates before diving into agenda items.",
+      "votes": 20,
+      "created": "2025-11-13"
+    },
+    {
+      "id": "25",
+      "country": "Italy",
+      "category": "First Meeting",
+      "text": "Personal connection matters — expect conversation about family, food, or football before business. Rushing to the pitch can feel cold.",
+      "votes": 26,
+      "created": "2025-11-14",
+      "expertNote": "Build warmth before building the deal."
+    }
+  ]
+}

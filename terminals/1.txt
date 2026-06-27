@@ -1,0 +1,7 @@
+---
+pid: 19216
+cwd: "D:\Users\farhang-nama"
+command: "python -m http.server 8080"
+started_at: 2026-06-27T20:20:11.994Z
+running_for_ms: 595006   
+---
