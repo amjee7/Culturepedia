@@ -78,7 +78,7 @@
     {
       "id": "10",
       "country": "India",
-      "category": "Communication",
+      "category": "Gestures",
       "text": "A head wobble can mean yes, acknowledgment, or polite uncertainty — not always agreement. Confirm decisions in writing.",
       "votes": 40,
       "created": "2025-11-06",
@@ -86,22 +86,6 @@
     },
     {
       "id": "11",
-      "country": "United States",
-      "category": "First Meeting",
-      "text": "A firm handshake and first-name basis are common even in first meetings. Small talk about sports or travel is a normal icebreaker.",
-      "votes": 22,
-      "created": "2025-11-07"
-    },
-    {
-      "id": "12",
-      "country": "United States",
-      "category": "Negotiation",
-      "text": "Americans often expect fast decisions and clear next steps. End meetings with a recap of action items and owners.",
-      "votes": 25,
-      "created": "2025-11-07"
-    },
-    {
-      "id": "13",
       "country": "France",
       "category": "Business Etiquette",
       "text": "Dress slightly more formal than you might at home. Lunch meetings are common and can last two hours — rushing signals disrespect.",
@@ -109,7 +93,7 @@
       "created": "2025-11-08"
     },
     {
-      "id": "14",
+      "id": "12",
       "country": "France",
       "category": "Communication",
       "text": "Debate is intellectual, not personal. Challenging ideas in a meeting can be a sign of engagement, not hostility.",
@@ -118,7 +102,7 @@
       "expertNote": "Separate argument from relationship."
     },
     {
-      "id": "15",
+      "id": "13",
       "country": "South Korea",
       "category": "First Meeting",
       "text": "Bow when greeting, with depth matching the other person's seniority. Offer and receive business cards with both hands.",
@@ -126,7 +110,7 @@
       "created": "2025-11-09"
     },
     {
-      "id": "16",
+      "id": "14",
       "country": "South Korea",
       "category": "Dining",
       "text": "Never pour your own drink — pour for others and let them pour for you. Use both hands when giving or receiving a glass from a senior colleague.",
@@ -134,23 +118,7 @@
       "created": "2025-11-09"
     },
     {
-      "id": "17",
-      "country": "Saudi Arabia",
-      "category": "First Meeting",
-      "text": "Greet the most senior person first. Handshakes between men are common; wait for women to extend a hand or offer a verbal greeting instead.",
-      "votes": 30,
-      "created": "2025-11-10"
-    },
-    {
-      "id": "18",
-      "country": "Saudi Arabia",
-      "category": "Business Etiquette",
-      "text": "Schedule around prayer times and avoid Friday midday meetings. Patience with relationship-building pays off before contracts.",
-      "votes": 24,
-      "created": "2025-11-10"
-    },
-    {
-      "id": "19",
+      "id": "15",
       "country": "Mexico",
       "category": "First Meeting",
       "text": "A handshake is standard; closer contacts may hug. Use titles (Licenciado, Ingeniero) until told otherwise.",
@@ -158,7 +126,7 @@
       "created": "2025-11-11"
     },
     {
-      "id": "20",
+      "id": "16",
       "country": "Mexico",
       "category": "Communication",
       "text": "Indirect refusals are common to save face. Phrases like 'we will see' or 'it is difficult' often mean no — read between the lines.",
@@ -167,45 +135,78 @@
       "expertNote": "Listen for what is not said."
     },
     {
-      "id": "21",
-      "country": "United Kingdom",
-      "category": "First Meeting",
-      "text": "A brief handshake and understated small talk work best. Avoid overselling yourself — understatement is often read as confidence.",
-      "votes": 23,
-      "created": "2025-11-12"
-    },
-    {
-      "id": "22",
-      "country": "United Kingdom",
-      "category": "Communication",
-      "text": "'Quite good' can mean mediocre, not excellent. British politeness often wraps criticism in soft language — decode carefully.",
-      "votes": 39,
-      "created": "2025-11-12"
-    },
-    {
-      "id": "23",
-      "country": "United Arab Emirates",
+      "id": "17",
+      "country": "UAE",
       "category": "Gift Giving",
       "text": "If offering a gift, avoid alcohol or pork-related items. Present it with the right hand or both hands and do not expect it to be opened immediately.",
       "votes": 19,
       "created": "2025-11-13"
     },
     {
-      "id": "24",
-      "country": "United Arab Emirates",
+      "id": "18",
+      "country": "UAE",
       "category": "Business Etiquette",
       "text": "Dress conservatively in business settings. Meetings may start with extended hospitality — accept coffee or dates before diving into agenda items.",
       "votes": 20,
       "created": "2025-11-13"
     },
     {
-      "id": "25",
+      "id": "19",
       "country": "Italy",
       "category": "First Meeting",
       "text": "Personal connection matters — expect conversation about family, food, or football before business. Rushing to the pitch can feel cold.",
       "votes": 26,
       "created": "2025-11-14",
       "expertNote": "Build warmth before building the deal."
+    },
+    {
+      "id": "20",
+      "country": "Turkey",
+      "category": "First Meeting",
+      "text": "A firm handshake with direct eye contact is standard. Address people by title plus first name (e.g. 'Mr. Ahmet') until invited to be more informal.",
+      "votes": 24,
+      "created": "2025-11-15"
+    },
+    {
+      "id": "21",
+      "country": "Turkey",
+      "category": "Dining",
+      "text": "Business meals are social events — accept tea or coffee offers graciously. Refusing hospitality can be read as coldness, not efficiency.",
+      "votes": 22,
+      "created": "2025-11-15"
+    },
+    {
+      "id": "22",
+      "country": "Iran",
+      "category": "Business Etiquette",
+      "text": "Relationship-building (ta'arof) is essential before deals. Expect polite offers of gifts or favors — a graceful decline is often part of the ritual.",
+      "votes": 30,
+      "created": "2025-11-16"
+    },
+    {
+      "id": "23",
+      "country": "Iran",
+      "category": "Taboos",
+      "text": "Avoid showing the sole of your foot, pointing with a finger, or offering a thumbs-up in formal settings. These gestures can be seen as disrespectful.",
+      "votes": 28,
+      "created": "2025-11-16",
+      "expertNote": "When unsure, mirror your host's body language."
+    },
+    {
+      "id": "24",
+      "country": "Thailand",
+      "category": "Gestures",
+      "text": "The wai greeting (palms together, slight bow) is appropriate in business — the height of your hands reflects the other person's status.",
+      "votes": 31,
+      "created": "2025-11-17"
+    },
+    {
+      "id": "25",
+      "country": "Thailand",
+      "category": "Taboos",
+      "text": "Never touch someone's head or point your feet at people or sacred objects. Criticizing the monarchy is illegal and deeply offensive.",
+      "votes": 27,
+      "created": "2025-11-17"
     }
   ]
 }

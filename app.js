@@ -3,6 +3,16 @@
 const STORAGE_KEY = 'culturepedia';
 const VOTES_KEY = 'culturepedia_votes';
 
+const COUNTRIES = [
+  'Brazil', 'China', 'France', 'Germany', 'India', 'Iran', 'Italy',
+  'Japan', 'Mexico', 'South Korea', 'Thailand', 'Turkey', 'UAE',
+];
+
+const CATEGORIES = [
+  'First Meeting', 'Business Etiquette', 'Communication', 'Dining',
+  'Gestures', 'Taboos', 'Gift Giving', 'Negotiation',
+];
+
 let hints = [];
 let votedIds = new Set();
 
@@ -95,23 +105,27 @@ function filteredHints() {
 }
 
 function populateFilters() {
-  const countries = [...new Set(hints.map(h => h.country))].sort();
-  const categories = [...new Set(hints.map(h => h.category))].sort();
-
-  fillSelect('filter-country', countries);
-  fillSelect('filter-category', categories);
+  fillSelect('filter-country', COUNTRIES, 'All countries');
+  fillSelect('filter-category', CATEGORIES, 'All categories');
+  fillSelect('new-country', COUNTRIES, 'Select country', true);
+  fillSelect('new-category', CATEGORIES, 'Select category', true);
 }
 
-function fillSelect(id, options) {
+function fillSelect(id, options, placeholder, isSubmit = false) {
   const select = document.getElementById(id);
   const current = select.value;
-  const label = id === 'filter-country' ? 'All countries' : 'All categories';
 
-  select.innerHTML = `<option value="">${label}</option>`;
+  if (isSubmit) {
+    select.innerHTML = `<option value="" disabled ${!current ? 'selected' : ''}>${placeholder}</option>`;
+  } else {
+    select.innerHTML = `<option value="">${placeholder}</option>`;
+  }
+
   for (const opt of options) {
     select.innerHTML += `<option value="${esc(opt)}">${esc(opt)}</option>`;
   }
-  select.value = current;
+
+  if (current && options.includes(current)) select.value = current;
 }
 
 // ── Render ─────────────────────────────────────────────────
@@ -134,34 +148,36 @@ function render() {
 function hintCard(h) {
   const voted = votedIds.has(h.id);
   const expertNote = h.expertNote
-    ? `<p class="text-xs text-brand-700 bg-brand-50 rounded-md px-2.5 py-1.5 mt-2 italic">💡 ${esc(h.expertNote)}</p>`
+    ? `<p class="text-xs text-brand-800 bg-brand-50 border border-brand-100 rounded-lg px-3 py-2 mt-3 leading-relaxed"><span class="font-medium not-italic">Note:</span> <span class="italic">${esc(h.expertNote)}</span></p>`
     : '';
 
   return `
-    <article class="bg-white rounded-xl shadow-sm border border-slate-200 p-4" data-id="${esc(h.id)}">
-      <div class="flex items-start justify-between gap-3">
-        <div class="flex-1 min-w-0">
-          <div class="flex flex-wrap items-center gap-2 mb-2">
-            <span class="text-xs font-medium bg-brand-50 text-brand-700 px-2 py-0.5 rounded-full">${esc(h.country)}</span>
-            <span class="text-xs font-medium bg-slate-100 text-slate-600 px-2 py-0.5 rounded-full">${esc(h.category)}</span>
-          </div>
-          <p class="text-sm leading-relaxed">${esc(h.text)}</p>
-          ${expertNote}
-        </div>
+    <article class="bg-white rounded-xl shadow-sm border border-slate-200 p-4 sm:p-5 hover:border-slate-300 transition-colors" data-id="${esc(h.id)}">
+      <div class="flex flex-wrap items-center gap-2 mb-3">
+        <span class="text-xs font-semibold bg-brand-50 text-brand-700 border border-brand-100 px-2.5 py-1 rounded-md">${esc(h.country)}</span>
+        <span class="text-xs font-medium bg-slate-50 text-slate-600 border border-slate-200 px-2.5 py-1 rounded-md">${esc(h.category)}</span>
       </div>
-      <div class="flex items-center gap-2 mt-3 pt-3 border-t border-slate-100">
+      <p class="text-sm sm:text-[0.9375rem] text-slate-700 leading-relaxed">${esc(h.text)}</p>
+      ${expertNote}
+      <div class="flex items-center gap-2 mt-4 pt-3 border-t border-slate-100">
         <button
-          class="upvote-btn flex items-center gap-1 text-xs font-medium px-2.5 py-1.5 rounded-lg transition
+          class="upvote-btn inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-lg transition
             ${voted ? 'bg-brand-100 text-brand-700 cursor-default' : 'bg-slate-100 text-slate-600 hover:bg-brand-50 hover:text-brand-700'}"
           data-id="${esc(h.id)}"
           ${voted ? 'disabled' : ''}
+          aria-label="Upvote hint"
         >
-          ▲ <span class="vote-count">${h.votes}</span>
+          <span aria-hidden="true">▲</span>
+          <span class="vote-count">${h.votes}</span>
         </button>
-        <button class="copy-btn text-xs font-medium px-2.5 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition" data-id="${esc(h.id)}">
+        <button
+          class="copy-btn text-xs font-medium px-3 py-1.5 rounded-lg bg-slate-100 text-slate-600 hover:bg-slate-200 transition"
+          data-id="${esc(h.id)}"
+          aria-label="Copy hint"
+        >
           Copy
         </button>
-        <span class="text-xs text-slate-400 ml-auto">${formatDate(h.created)}</span>
+        <time class="text-xs text-slate-400 ml-auto" datetime="${esc(h.created)}">${formatDate(h.created)}</time>
       </div>
     </article>
   `;

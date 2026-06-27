@@ -3,5 +3,16 @@ pid: 19216
 cwd: "D:\Users\farhang-nama"
 command: "python -m http.server 8080"
 started_at: 2026-06-27T20:20:11.994Z
-running_for_ms: 595006   
+running_for_ms: 964996   
 ---
+Serving HTTP on :: port 8080 (http://[::]:8080/) ...
+::1 - - [27/Jun/2026 23:50:38] "GET /data.json HTTP/1.1" 200 -
+::1 - - [27/Jun/2026 23:58:38] "GET / HTTP/1.1" 200 -
+::1 - - [27/Jun/2026 23:58:38] "GET /app.js HTTP/1.1" 200 -
+::1 - - [27/Jun/2026 23:58:38] "GET /manifest.json HTTP/1.1" 200 -
+::1 - - [27/Jun/2026 23:58:43] "GET /data.json HTTP/1.1" 200 -
+::1 - - [27/Jun/2026 23:58:43] "GET /sw.js HTTP/1.1" 200 -
+::1 - - [27/Jun/2026 23:58:43] "GET /index.html HTTP/1.1" 200 -
+::1 - - [27/Jun/2026 23:58:43] "GET /icon.svg HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 00:05:20] "GET /index.html HTTP/1.1" 200 -
+::1 - - [28/Jun/2026 00:05:20] "GET /app.js HTTP/1.1" 200 -
