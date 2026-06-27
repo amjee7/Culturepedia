@@ -50,4 +50,4 @@ Upload all files to any static host — GitHub Pages, Netlify, Cloudflare Pages,
 
 ## License
 
-Your project — use and modify freely.
+Your project — use and modify freely."# Culturepedia" 
